@@ -1,5 +1,6 @@
 package com.mainacad;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -9,8 +10,6 @@ import java.util.Map;
 
 public class Main
 {
-    private static String chromePath = "drivers/chromedriverWin.exe";
-    //private static String chromePath = "drivers/chromedriverMac";
 
 
     public static WebDriver getDriver(String deviceName) {
@@ -24,7 +23,7 @@ public class Main
         options.setExperimentalOption("mobileEmulation", mobileEmulation);
 
         //Создаём драйвер с заданными настройками - options
-        System.setProperty("webdriver.chrome.driver", chromePath);
+        WebDriverManager.chromedriver().setup();
         return new ChromeDriver(options);
     }
 }
